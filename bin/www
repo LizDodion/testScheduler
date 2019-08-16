@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+// Test script file to confirm Heroku Scheduler correctly reads from this type of resource.
+
+// ensure the end-of-line sequence for these files is LF, not CRLF
+// ensure these files are in the 'bin' folder, for Heroku Scheduler to recognise
+const { run_talend_test} = require(`../lib/oms_methode_integration`);
+run_talend_test();

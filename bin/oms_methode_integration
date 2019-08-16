@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+// Script file for oms methode integration with Salesforce
+require(`dotenv`).config();
+const logger = require(`@financial-times/n-logger`).default;
+logger.info({event: `methodeProcess-sf-oms`, type: `start`});
+
+// ensure the end-of-line sequence for these files is LF, not CRLF
+// ensure these files are in the 'bin' folder, for Heroku Scheduler to recognise
+const { run_talend_sf: run_talend_sf } = require(`../lib/oms_methode_integration`);
+
+run_talend_sf();

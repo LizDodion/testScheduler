@@ -4,8 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server/index.js",
+    "pretest": "eslint --ignore-path .gitignore . --max-warnings 1",
+    "test": "jest",
+    "job": "nodemon bin/www"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@financial-times/n-logger": "^6.1.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "dotenv": "^8.0.0",
+    "eslint": "^6.1.0",
+    "express": "^4.17.1",
+    "jest": "^24.9.0",
+    "nodemin": "^1.0.1",
+    "nodemon": "^1.19.1"
+  }
 }
