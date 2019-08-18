@@ -1,7 +1,18 @@
 #!/usr/bin/env node
 // Test script file to confirm Heroku Scheduler correctly reads from this type of resource.
-
+const axios = require('axios');
 // ensure the end-of-line sequence for these files is LF, not CRLF
 // ensure these files are in the 'bin' folder, for Heroku Scheduler to recognise
-const { run_talend_test} = require(`../lib/oms_methode_integration`);
-run_talend_test();
+// const { run_talend_test} = require(`../lib/oms_methode_integration`);
+const ping_url = async () => {
+    await axios.get('https://cron-liz-test.herokuapp.com/').catch(err => console.log(err));
+};
+const today = new Date();
+// Weekday
+// console.log(today.getDay());
+// console.log(today.getHours());
+// console.log(today.getMinutes());
+if (today.getDay() <= 5 && today.getDay() >= 1 && today.getHours() >= 7 && (today.getHours() <= 17 && today.getMinutes() < 45)) {
+    console.log('Keeping awake');
+    ping_url();
+}
