@@ -1,13 +1,19 @@
 #!/usr/bin/env node
 // Test script file to confirm Heroku Scheduler correctly reads from this type of resource.
 const axios = require('axios');
+var moment = require('moment');
 
 const ping_url = async () => {
     await axios.get('https://cron-liz-test.herokuapp.com/', { validateStatus: false }).catch(err => console.log(err));
 };
 const today = new Date();
 
-if (today.getHours() >= 7 && (today.getHours() <= 21)) {
+if (moment().hours() >= 7 && (moment().hours() <= 21)) {
     console.log('Keeping awake');
+//console.log(today);
+//console.log(today.getTimezoneOffset());
+//console.log(today.setTime(today.getTime() - today.getTimezoneOffset()*60*1000));
+//console.log(today);
+console.log(moment().format());
     ping_url();
 }
